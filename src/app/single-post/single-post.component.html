@@ -1,0 +1,47 @@
+<div class="container py-80">
+    <div class="card rounded border-0 shadow-black-opacity-0_26">
+        <div class="card-body">
+            <!-- <p style="font-size:100%;">{{post.author}}</p> -->
+            <h5 class="text-dark mb-4 mt-2 text-capitalize">{{post.title}}</h5>
+            <p class="color-777 pl-2 text-justify">{{post.body.split(0,100)}}</p>
+            <div class="d-flex mt-5 border-bottom border-top">
+                <div class="py-3 d-flex align-items-center justify-content-between" style="flex: 1">
+                    <p class="color-777 font-size-14 font-weight-bold text-uppercase mb-0">{{comments.length}} Comments
+                    </p>
+                    <a class="cursor-pointer hover--underline-none" (click)="openCommentBox()">
+                        <div class="bg-soft-purple p-2 text-white d-flex align-items-center"> <span
+                                class="material-icons">message</span> <span class="font-size-14 pl-1">Write
+                                Comment</span></div>
+                    </a>
+                </div>
+            </div>
+            <div *ngIf="showcommentbox==true" class="row justify-content-center py-4">
+                <div class="col-md-6">
+                    <form>
+                        <div class="form-group">
+                            <label for="exampleFormControlTextarea1" class="color-737373 mb-2">Write Comments</label>
+                            <textarea class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
+                        </div>
+                    </form>
+                    <button type="submit" class="btn bg-soft-purple text-white px-4">Submit</button>
+                </div>
+            </div>
+            <div class="row mt-5 pl-2" *ngFor="let comment of comments">
+                <div class="col-md-6">
+                    <p class="text-dark color-737373 text-capitalize font-weight-bold mb-0">Author:
+                        {{comment.commenter}}</p>
+                    <p class="color-777 font-size-12">27 Sep 2020</p>
+                    <p class="font-size-14 pl-4">{{comment.commentBody}}</p>
+                </div>
+                <div class="col-md-6 text-right">
+                    <a *ngIf="comment.commenter==user.sub" class="color-777 text-uppercase font-size-14 cursor-pointer"
+                        (click)="setEditComment(comment)">Edit</a>
+                    <a class="cursor-pointer ml-2" *ngIf="comment.commenter==user.sub || user.role=='admin' "
+                        (click)="deleteComment(comment.id)">
+                        <span class="material-icons">delete</span>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

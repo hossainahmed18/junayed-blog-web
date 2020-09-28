@@ -1,0 +1,73 @@
+<div *ngIf="posts.length==0" class="loader"></div>
+
+<div class="position-fixed" style="right: 0; top: 10%;">
+    <a class="cursor-pointer shadow-black-opacity-0_26 hover--underline-none" (click)="checkValidity()">
+        <div class="bg-soft-purple p-3 text-white d-flex align-items-center"> <span class="material-icons">add</span>
+            create</div>
+    </a>
+</div>
+<section class="py-80">
+    <div class="container">
+        <div class="row justify-content-center">
+            <h3 class="color-737373">Blog Posts</h3>
+        </div>
+    </div>
+</section>
+<div class="container">
+    <div class="row">
+        <div *ngFor="let post of posts" class="col-md-4 mb-4">
+            <div class="card border-0 rounded shadow-black-opacity-0_26">
+                <div class="card-body">
+
+                    <div class="d-flex mb-2">
+                        <div class="d-flex align-items-center">
+                            <div class="mr-2">
+                                <p class="mb-0 font-size-14 color-777 text-capitalize">Author: {{post.author}} </p>
+                            </div>
+
+                            <div *ngIf="user.role=='admin'">
+                                <span class="material-icons text-success">{{post.status}}</span>
+                            </div>
+                        </div>
+                        <div class="d-flex ml-auto">
+                            <div *ngIf="post.author==user.sub" class="mr-2">
+                                <a class="material-icons hover--underline-none"
+                                    [routerLink]="['/post/create-post', post.id]">
+                                    create
+                                </a>
+                            </div>
+                            <div *ngIf="post.author==user.sub || user.role=='admin' ">
+                                <a class="material-icons color-a2a2a2 color-9c9c9c--hover hover--underline-none"
+                                    (click)="onDeleteConfirm(post.id)">
+                                    cancel
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="py-2">
+                        <a [routerLink]="['/posts', post.id]" class="text-dark text-capitalize hover--underline-none">
+                            <h6>{{post.title}}</h6>
+                        </a>
+                    </div>
+                    <div>
+                        <p class="color-777 font-size-14">{{post.body}}</p>
+                    </div>
+                    <div>
+                        <a [routerLink]="['/posts', post.id]" class="font-size-12">Read More...</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div>
+
+        <div *ngIf="overlay==true" class="overlay">
+            <span class="material-icons position-relative mt-5 ml-4" (click)="hideLofForm()">
+                clear
+            </span>
+            <app-login></app-login>
+        </div>
+
+    </div>
+</div>

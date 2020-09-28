@@ -1,0 +1,61 @@
+html, body { height: 100%; }
+body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+a {
+    color: #686de0;
+}
+
+.author {
+    display: inline-block;
+    background-color: #8589e6;
+    padding: 5px 10px;
+    border-radius: 25px;
+    font-size: 13px;
+    color: #fff;
+    font-weight: bolder;
+    margin-bottom: 5px;
+}
+.shadow-black-opacity-0_26 {
+    box-shadow: 0px 0px 34px rgba(0, 0, 0, 0.026);
+}
+.hover--underline-none:hover {
+    text-decoration: none;
+}
+.color-a2a2a2{
+    color: #a2a2a2 !important;
+}
+.color-9c9c9c--hover:hover{
+    color: #9c9c9c !important;
+}
+.color-777{
+    color: #777 !important;
+}
+.color-737373{
+    color: #737373 !important;
+}
+.color-soft-red {
+    color: #ff6868 !important;
+}
+.bg-soft-purple {
+    background-color: rgba(104, 108, 224, 0.884) !important;
+}
+.bg-soft-purple:hover {
+    background-color: rgb(104, 109, 224) !important;
+}
+.bg-gray-light-v5 {
+    background-color: #f7f7f7 !important;
+}
+.cursor-pointer {
+    cursor: pointer;
+}
+/* ======= Font Size ======= */
+.font-size-12 {
+    font-size: 12px;
+}
+.font-size-14 {
+    font-size: 14px;
+}
+
+.py-80 {
+    padding-top: 5.71429rem !important;
+    padding-bottom: 5.71429rem !important;
+}
